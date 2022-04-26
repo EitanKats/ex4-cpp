@@ -6,11 +6,13 @@
 #define EX4_CPP_ASSASSIN_HPP
 
 #include "Player.hpp"
+
 namespace coup {
-    class Assassin: protected Player{
-        std::string role() {
-            return "Assassin";
-        }
+    class Assassin : public Player {
+    public:
+        Assassin(Game &currGame, std::string name);
+
+        virtual void coup(Player& other_player);
     };
 
 }

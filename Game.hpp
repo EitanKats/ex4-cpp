@@ -6,14 +6,12 @@
 #define EX4_CPP_GAME_HPP
 
 #include "vector"
-#include "Player.hpp"
 
 namespace coup {
     class Game {
     private:
         std::vector <std::string> _currPlayers;
     public:
-        Game();
 
         std::vector <std::string> players();
 

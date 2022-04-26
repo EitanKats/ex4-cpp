@@ -3,3 +3,12 @@
 //
 
 #include "Contessa.hpp"
+
+namespace coup {
+    Contessa::Contessa(Game &currGame, std::string name)
+            : Player{currGame, name, "Contessa"} {}
+
+    void Contessa::block(Player &other_player) {
+
+    }
+}

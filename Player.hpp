@@ -15,19 +15,23 @@ namespace coup {
         std::string _name;
         int _coins;
         Game _currGame;
+        std::string _role;
 
-        Player(Game &currGame, std::string name);
+        Player(Game &currGame, std::string name, std::string currRole);
 
-        virtual std::string role() = 0;
 
     public:
-        int income();
+
+
+        void income();
 
         void foreign_aid();
 
-        void coup();
+        virtual void coup(Player &other_player);
 
+        std::string role();
 
+        int coins();
     };
 }
 

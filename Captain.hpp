@@ -9,10 +9,13 @@
 
 namespace coup {
 
-    class Captain : protected Player {
-        std::string role() {
-            return "Captain";
-        }
+    class Captain : public Player {
+    public:
+        Captain(Game &currGame, std::string name);
+
+        void steal(Player &other_player);
+
+        void block(Player &other_player);
 
     };
 }

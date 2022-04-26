@@ -8,7 +8,17 @@
 #include "Player.hpp"
 
 namespace coup {
-    Duke::Duke(Game &currGame, std::string name) : Player{currGame, name} {
+
+    Duke::Duke(Game &currGame, std::string name) : Player{currGame, name, "Duke"} {
 
     }
+
+    void Duke::tax() {
+        this->_coins += 3;
+    }
+
+    void Duke::block(Player &toBlock) {
+
+    }
+
 }

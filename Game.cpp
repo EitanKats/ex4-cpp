@@ -3,3 +3,15 @@
 //
 
 #include "Game.hpp"
+#include "string"
+
+namespace coup {
+    std::string Game::turn() {
+        std::string test = "";
+        return test;
+    }
+
+    std::vector <std::string> Game::players() {
+        return this->_currPlayers;
+    }
+}

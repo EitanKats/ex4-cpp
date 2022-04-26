@@ -9,10 +9,11 @@
 
 namespace coup {
 
-    class Contessa : protected Player {
-        std::string role() {
-            return "Contessa";
-        }
+    class Contessa : public Player {
+    public:
+        Contessa(Game &currGame, std::string name);
+
+        void block(Player &other_player);
     };
 }
 #endif //EX4_CPP_CONTESSA_HPP

@@ -8,14 +8,14 @@
 #include "Player.hpp"
 
 namespace coup {
-    class Duke : protected Player {
+    class Duke : public Player {
 
     public:
         Duke(Game &currGame, std::string name);
 
-        std::string role() {
-            return "Duke";
-        }
+        void tax();
+
+        void block(Player &toBlock);
     };
 }
 #endif //EX4_CPP_DUKE_HPP
