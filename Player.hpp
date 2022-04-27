@@ -14,9 +14,10 @@ namespace coup {
     protected:
         std::string _name;
         int _coins;
-        Game _currGame;
+        Game &_currGame;
         std::string _role;
 
+        //the protected constructor prevents instance creation
         Player(Game &currGame, std::string name, std::string currRole);
 
 

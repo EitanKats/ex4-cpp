@@ -10,10 +10,12 @@
 namespace coup {
     class Game {
     private:
-        std::vector <std::string> _currPlayers;
+        std::vector<std::string> _currPlayers;
     public:
 
-        std::vector <std::string> players();
+        void addPlayer(std::string name);
+
+        std::vector<std::string> players();
 
         std::string turn();
 
