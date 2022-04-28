@@ -6,13 +6,9 @@
 #include "Game.hpp"
 
 namespace coup {
-    Player::Player(Game &currGame, std::string name, std::string currRole)
-            : _currGame(currGame), _name(name), _role(currRole), _coins(0) {
+    Player::Player(Game &currGame,const std::string &name)
+            : _currGame(currGame), _name(name), _coins(0) {
         this->_currGame.addPlayer(name);
-    }
-
-    std::string Player::role() {
-        return this->_role;
     }
 
     void Player::income() {

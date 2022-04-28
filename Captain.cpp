@@ -4,8 +4,8 @@
 #include "Captain.hpp"
 
 namespace coup {
-    Captain::Captain(Game &currGame, std::string name) :
-            Player{currGame, name, "Captain"} {}
+    Captain::Captain(Game &currGame, const std::string& name) :
+            Player{currGame, name} {}
 
     void Captain::block(Player &other_player) {
 
@@ -13,5 +13,9 @@ namespace coup {
 
     void Captain::steal(Player &other_player) {
 
+    }
+
+    std::string Captain::role() const {
+        return "Captain";
     }
 }

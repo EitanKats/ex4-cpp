@@ -11,11 +11,13 @@ namespace coup {
 
     class Captain : public Player {
     public:
-        Captain(Game &currGame, std::string name);
+        Captain(Game &currGame, const std::string& name);
 
         void steal(Player &other_player);
 
         void block(Player &other_player);
+
+        std::string role() const override;
 
     };
 }

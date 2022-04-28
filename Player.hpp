@@ -15,10 +15,9 @@ namespace coup {
         std::string _name;
         int _coins;
         Game &_currGame;
-        std::string _role;
 
         //the protected constructor prevents instance creation
-        Player(Game &currGame, std::string name, std::string currRole);
+        Player(Game &currGame, const std::string& name);
 
 
     public:
@@ -30,7 +29,7 @@ namespace coup {
 
         virtual void coup(Player &other_player);
 
-        std::string role();
+        virtual std::string role() const = 0;
 
         int coins();
     };

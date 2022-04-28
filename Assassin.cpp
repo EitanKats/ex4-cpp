@@ -5,8 +5,12 @@
 
 namespace coup {
 
-    Assassin::Assassin(Game &currGame, std::string name)
-    : Player{currGame, name,"Assassin"} {}
+    Assassin::Assassin(Game &currGame, const std::string& name)
+            : Player{currGame, name} {}
 
     void Assassin::coup(Player &toCoup) {}
+
+    std::string Assassin::role() const {
+        return "Assassin";
+    }
 }

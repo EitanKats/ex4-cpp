@@ -11,9 +11,11 @@ namespace coup {
 
     class Contessa : public Player {
     public:
-        Contessa(Game &currGame, std::string name);
+        Contessa(Game &currGame, const std::string &name);
 
         void block(Player &other_player);
+
+        std::string role() const override;
     };
 }
 #endif //EX4_CPP_CONTESSA_HPP

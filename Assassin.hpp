@@ -10,9 +10,11 @@
 namespace coup {
     class Assassin : public Player {
     public:
-        Assassin(Game &currGame, std::string name);
+        Assassin(Game &currGame,const std::string& name);
 
-        virtual void coup(Player& other_player);
+        virtual void coup(Player& other_player) override;
+
+        std::string role() const override;
     };
 
 }

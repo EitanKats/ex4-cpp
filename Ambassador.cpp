@@ -6,7 +6,7 @@
 
 namespace coup {
 
-    Ambassador::Ambassador(Game &currGame, std::string name) : Player{currGame, name, "Ambassador"} {}
+    Ambassador::Ambassador(Game &currGame, const std::string &name) : Player{currGame, name} {}
 
     void Ambassador::block(const Player &other_player) {
 
@@ -14,5 +14,9 @@ namespace coup {
 
     void Ambassador::transfer(const Player &first_player, const Player &second_player) {
 
+    }
+
+    std::string Ambassador::role() const {
+        return "Ambassador";
     }
 }

@@ -10,15 +10,16 @@ namespace coup {
 
 
     std::string Game::turn() {
-        std::string test = "";
-        return test;
+
+        this->currPlayer = this->currPlayer % this->_currPlayers.size();
+        return this->_currPlayers[this->currPlayer++];
     }
 
     std::vector<std::string> Game::players() {
         return this->_currPlayers;
     }
 
-    void Game::addPlayer(std::string name) {
+    void Game::addPlayer(const std::string &name) {
         this->_currPlayers.push_back(name);
     }
 }

@@ -9,7 +9,7 @@
 
 namespace coup {
 
-    Duke::Duke(Game &currGame, std::string name) : Player{currGame, name, "Duke"} {
+    Duke::Duke(Game &currGame, const std::string& name) : Player{currGame, name} {
 
     }
 
@@ -19,6 +19,10 @@ namespace coup {
 
     void Duke::block(Player &toBlock) {
 
+    }
+
+    std::string Duke::role() const {
+        return "Duke";
     }
 
 }
