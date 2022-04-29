@@ -9,7 +9,7 @@
 
 namespace coup {
 
-    Duke::Duke(Game &currGame, const std::string& name) : Player{currGame, name} {
+    Duke::Duke(Game &currGame, const std::string &name) : Player{currGame, name} {
 
     }
 

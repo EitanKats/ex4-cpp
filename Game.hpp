@@ -21,6 +21,8 @@ namespace coup {
         std::string turn();
 
         std::string winner();
+
+        void passTurn();
     };
 }
 

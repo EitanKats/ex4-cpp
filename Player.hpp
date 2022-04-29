@@ -19,6 +19,8 @@ namespace coup {
         //the protected constructor prevents instance creation
         Player(Game &currGame, const std::string& name);
 
+        void isEligibleForMove();
+
 
     public:
 

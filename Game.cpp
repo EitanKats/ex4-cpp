@@ -10,9 +10,7 @@ namespace coup {
 
 
     std::string Game::turn() {
-
-        this->currPlayer = this->currPlayer % this->_currPlayers.size();
-        return this->_currPlayers[this->currPlayer++];
+        return this->_currPlayers[this->currPlayer];
     }
 
     std::vector<std::string> Game::players() {
@@ -21,5 +19,17 @@ namespace coup {
 
     void Game::addPlayer(const std::string &name) {
         this->_currPlayers.push_back(name);
+    }
+
+    std::string Game::winner() {
+        if (this->_currPlayers.size() > 1) {
+            throw std::runtime_error("game is ongoing");
+        }
+        return this->_currPlayers[0];
+    }
+
+    void Game::passTurn() {
+        ++this->currPlayer;
+        this->currPlayer = this->currPlayer % this->_currPlayers.size();
     }
 }
