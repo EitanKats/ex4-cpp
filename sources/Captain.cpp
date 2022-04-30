@@ -15,7 +15,7 @@ namespace coup {
     void Captain::steal(Player &otherPlayer) {
         this->isEligibleForMove();
         this->isCoupNecessary();
-        this->validateInteractionAction(otherPlayer);
+        validateInteractionAction(otherPlayer);
         int toSteal = std::min(otherPlayer.coins(), 2);
         otherPlayer.amendCoins(-toSteal);
         this->amendCoins(toSteal);
