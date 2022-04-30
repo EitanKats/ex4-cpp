@@ -6,6 +6,7 @@
 #define EX4_CPP_GAME_HPP
 
 #include "vector"
+#include "string"
 
 namespace coup {
     class Game {
