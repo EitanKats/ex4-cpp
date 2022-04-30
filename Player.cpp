@@ -24,7 +24,7 @@ namespace coup {
         this->_currGame.passTurn();
     }
 
-    int Player::coins() {
+    int Player::coins() const {
         return this->_coins;
     }
 
@@ -36,10 +36,10 @@ namespace coup {
 
     void Player::coup(Player &other_player) {
         this->isEligibleForMove();
-        if (this->_coins < 7) {
+        if (this->_coins < this->coupCost) {
 //            throw std::runtime_error("insufficient amount of coins");
         }
-        this->_coins -= 7;
+        this->_coins -= this->coupCost;
         this->_currGame.passTurn();
     }
 
