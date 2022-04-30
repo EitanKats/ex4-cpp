@@ -3,7 +3,7 @@
 //
 
 #include "Game.hpp"
-#include "string"
+#include "exception"
 #include "vector"
 
 
@@ -24,7 +24,7 @@ namespace coup {
 
     std::string Game::winner() {
         if (this->_currPlayers.size() > 1) {
-            throw std::runtime_error("game is ongoing");
+//            throw std::runtime_error("game is ongoing");
         }
         return this->_currPlayers[0];
     }

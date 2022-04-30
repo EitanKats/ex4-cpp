@@ -4,6 +4,7 @@
 
 #include "Player.hpp"
 #include "Game.hpp"
+#include "exception"
 
 namespace coup {
     Player::Player(Game &currGame, const std::string &name)
@@ -13,7 +14,7 @@ namespace coup {
 
     void Player::isEligibleForMove() {
         if (this->_currGame.turn() != this->_name) {
-            throw std::runtime_error("Not your turn");
+//            throw std::runtime_error("Not your turn");
         }
     }
 
@@ -36,7 +37,7 @@ namespace coup {
     void Player::coup(Player &other_player) {
         this->isEligibleForMove();
         if (this->_coins < 7) {
-            throw std::runtime_error("insufficient amount of coins");
+//            throw std::runtime_error("insufficient amount of coins");
         }
         this->_coins -= 7;
         this->_currGame.passTurn();
