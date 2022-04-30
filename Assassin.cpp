@@ -13,7 +13,7 @@ namespace coup {
 
     void Assassin::coup(Player &other_player) {
         if (this->_coins < this->coupCost) {
-//            throw std::runtime_error("insufficient cost");
+//            throw std::runtime_error("insufficient coins");
         }
     }
 
