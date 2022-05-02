@@ -14,11 +14,13 @@ namespace coup {
     }
 
     void Duke::tax() {
+        this->isEligibleForMove();
         this->_coins += 3;
+        this->_currGame.passTurn();
     }
 
     void Duke::block(Player &toBlock) {
-
+        toBlock.checkBlock(*this);
     }
 
     std::string Duke::role() const {

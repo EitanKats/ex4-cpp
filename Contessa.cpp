@@ -5,10 +5,11 @@
 #include "Contessa.hpp"
 
 namespace coup {
-    Contessa::Contessa(Game &currGame, const std::string& name)
+    Contessa::Contessa(Game &currGame, const std::string &name)
             : Player{currGame, name} {}
 
-    void Contessa::block(Player &other_player) {
+    void Contessa::block(Player &otherPlayer) {
+        otherPlayer.checkBlock(*this);
 
     }
 

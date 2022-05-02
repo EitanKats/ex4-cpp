@@ -11,11 +11,11 @@ namespace coup {
 
     class Ambassador : public Player {
     public:
-        Ambassador(Game &currGame, const std::string& name);
+        Ambassador(Game &currGame, const std::string &name);
 
-        void transfer(const Player &first_player, const Player &second_player);
+        void transfer(Player &firstPlayer, Player &secondPlayer);
 
-        void block(const Player &other_player);
+        void block(Player &otherPlayer);
 
         std::string role() const override;
     };

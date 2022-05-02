@@ -13,7 +13,7 @@ namespace coup {
     public:
         Contessa(Game &currGame, const std::string &name);
 
-        void block(Player &other_player);
+        void block(Player &otherPlayer);
 
         std::string role() const override;
     };

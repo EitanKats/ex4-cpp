@@ -13,9 +13,9 @@ namespace coup {
     public:
         Captain(Game &currGame, const std::string& name);
 
-        void steal(Player &other_player);
+        void steal(Player &otherPlayer);
 
-        void block(Player &other_player);
+        void block(Player &otherPlayer);
 
         std::string role() const override;
 

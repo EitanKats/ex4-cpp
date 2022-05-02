@@ -12,7 +12,7 @@ namespace coup {
     public:
         Assassin(Game &currGame,const std::string& name);
 
-        virtual void coup(Player& other_player) override;
+        virtual void coup(Player& otherPlayer) override;
 
         std::string role() const override;
     };

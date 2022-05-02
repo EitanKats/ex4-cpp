@@ -3,16 +3,22 @@
 //
 
 #include "Ambassador.hpp"
+#include "set"
 
 namespace coup {
 
     Ambassador::Ambassador(Game &currGame, const std::string &name) : Player{currGame, name} {}
 
-    void Ambassador::block(const Player &other_player) {
-
+    void Ambassador::block(Player &otherPlayer) {
+        otherPlayer.checkBlock(*this);
     }
 
-    void Ambassador::transfer(const Player &first_player, const Player &second_player) {
+    void Ambassador::transfer(Player &firstPlayer, Player &secondPlayer) {
+        this->isEligibleForMove();
+        this->isCoupNecessary();
+        firstPlayer.amendCoins(-1);
+        secondPlayer.amendCoins(1);
+        this->_currGame.passTurn();
 
     }
 

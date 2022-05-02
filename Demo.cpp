@@ -20,6 +20,7 @@ using namespace coup;
 #include <iostream>
 #include <stdexcept>
 #include <vector>
+
 using namespace std;
 
 int main() {
@@ -44,7 +45,7 @@ and he is a player in game_1 */
   Reut
   Gilad
 */
-    for(string name : players){
+    for (string name: players) {
         cout << name << endl;
     }
 
@@ -59,9 +60,9 @@ and he is a player in game_1 */
     contessa.income();
 
 // throws exception, it is duke's turn now
-    try{
+    try {
         assassin.income();
-    }catch (const std::exception &e){
+    } catch (const std::exception &e) {
         std::cerr << e.what() << '\n';
     }
     duke.income();
@@ -69,10 +70,9 @@ and he is a player in game_1 */
 
 // throws exception, the last operation duke performed
 // is income, which cannot be blocked by any role
-    try{
+    try {
         captain.block(duke);
-    }catch (const std::exception &e)
-    {
+    } catch (const std::exception &e) {
         std::cerr << e.what() << '\n';
     }
 
@@ -81,10 +81,9 @@ and he is a player in game_1 */
 
 // throws exception, the last operation assassin performed
 // is foreign aid, which cannot be blocked by contessa
-    try{
+    try {
         contessa.block(assassin);
-    }catch (const std::exception &e)
-    {
+    } catch (const std::exception &e) {
         std::cerr << e.what() << '\n';
     }
 
@@ -113,8 +112,7 @@ and he is a player in game_1 */
   Reut
   Gilad
 */
-    for (string name : players)
-    {
+    for (string name: players) {
         cout << name << endl;
     }
 
@@ -129,8 +127,7 @@ and he is a player in game_1 */
   Reut
   Gilad
 */
-    for (string name : players)
-    {
+    for (string name: players) {
         cout << name << endl;
     }
 }

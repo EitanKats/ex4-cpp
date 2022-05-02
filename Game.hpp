@@ -7,15 +7,23 @@
 
 #include "vector"
 #include "string"
+#include "Player.hpp"
 
 namespace coup {
+    class Player;
+
     class Game {
+
     private:
         std::vector<std::string> _currPlayers;
         size_t currPlayer = 0;
+
+        //returns the index of the player that was couped
+
+
     public:
 
-        void addPlayer(const std::string& name);
+        void addPlayer(const std::string &name);
 
         std::vector<std::string> players();
 
@@ -24,6 +32,10 @@ namespace coup {
         std::string winner();
 
         void passTurn();
+
+        size_t executeCoup(const std::string &playerName);
+
+        void revivePlayer(size_t playerIdx, const Player &toRevive);
     };
 }
 

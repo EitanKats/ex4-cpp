@@ -7,8 +7,13 @@
 
 #include "string"
 #include "Game.hpp"
+#include <functional>
+#include "set"
+#include "string"
 
 namespace coup {
+
+    class Game;
 
     class Player {
 
@@ -17,12 +22,19 @@ namespace coup {
         int _coins;
         Game &_currGame;
         int coupCost = 7;
+        std::function<void()> _rollbackcb;
+        std::set<std::string> _blockers;
 
         //the protected constructor prevents instance creation
-        Player(Game &currGame, const std::string& name);
+        Player(Game &currGame, const std::string &name);
 
         void isEligibleForMove();
 
+        void isCoupNecessary();
+
+
+    private:
+        void clearCB();
 
     public:
 
@@ -31,11 +43,17 @@ namespace coup {
 
         void foreign_aid();
 
-        virtual void coup(Player &other_player);
+        virtual void coup(Player &otherPlayer);
 
         virtual std::string role() const = 0;
 
         int coins() const;
+
+        void checkBlock(const Player &blockingPlayer);
+
+        void amendCoins(int diff);
+
+        const std::string &getName() const;
     };
 }
 
