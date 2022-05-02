@@ -21,6 +21,10 @@ namespace coup {
         std::string _name;
         int _coins;
         Game &_currGame;
+    public:
+        Game &getCurrGame() const;
+
+    protected:
         int coupCost = 7;
         std::function<void()> _rollbackcb;
         std::set<std::string> _blockers;

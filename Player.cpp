@@ -59,10 +59,15 @@ namespace coup {
         if (this->_coins < this->coupCost) {
             throw std::runtime_error("insufficient amount of coins");
         }
+        this->amendCoins(-this->coupCost);
         this->_currGame.executeCoup(otherPlayer.getName());
+        this->_currGame.passTurn();
     }
 
     void Player::checkBlock(const Player &blockingPlayer) {
+        if (&this->_currGame != &blockingPlayer.getCurrGame()) {
+            throw std::runtime_error("cannot block player from different game");
+        }
         if (this->_name == blockingPlayer.getName()) {
             throw std::runtime_error("cannot block same player");
         }
@@ -82,6 +87,10 @@ namespace coup {
 
     const std::string &Player::getName() const {
         return _name;
+    }
+
+    Game &Player::getCurrGame() const {
+        return _currGame;
     }
 
 }
