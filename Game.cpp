@@ -51,4 +51,8 @@ namespace coup {
         throw std::runtime_error("player doesn't exist in game");
     }
 
+    size_t Game::getCurrPlayer() const {
+        return currPlayer;
+    }
+
 }

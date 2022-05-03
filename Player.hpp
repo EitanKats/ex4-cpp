@@ -36,6 +36,8 @@ namespace coup {
 
         void isCoupNecessary();
 
+        void coupPassTurn(size_t coupedPlayerIdx);
+
 
     private:
         void clearCB();

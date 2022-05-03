@@ -60,8 +60,8 @@ namespace coup {
             throw std::runtime_error("insufficient amount of coins");
         }
         this->amendCoins(-this->coupCost);
-        this->_currGame.executeCoup(otherPlayer.getName());
-        this->_currGame.passTurn();
+        size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
+        this->coupPassTurn(coupedPlayerIdx);
     }
 
     void Player::checkBlock(const Player &blockingPlayer) {
@@ -78,6 +78,12 @@ namespace coup {
             throw std::runtime_error("block action didn't go through");
         }
 
+    }
+
+    void Player::coupPassTurn(size_t coupedPlayerIdx) {
+        if (coupedPlayerIdx > this->_currGame.getCurrPlayer()) {
+            this->_currGame.passTurn();
+        }
     }
 
     void Player::clearCB() {

@@ -16,9 +16,12 @@ namespace coup {
             throw std::runtime_error("insufficient coins");
         }
         this->_blockers = {"Contessa"};
-        size_t playerIdx = this->_currGame.executeCoup(otherPlayer.getName());
-        this->_rollbackcb = [&otherPlayer, playerIdx, this]() { this->_currGame.revivePlayer(playerIdx, otherPlayer); };
+        size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
+        this->_rollbackcb = [&otherPlayer, coupedPlayerIdx, this]() {
+            this->_currGame.revivePlayer(coupedPlayerIdx, otherPlayer);
+        };
         this->amendCoins(-this->coupCost);
+        this->coupPassTurn(coupedPlayerIdx);
     }
 
     std::string Assassin::role() const {

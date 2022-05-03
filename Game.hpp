@@ -31,6 +31,8 @@ namespace coup {
 
         std::string winner();
 
+        size_t getCurrPlayer() const;
+
         void passTurn();
 
         size_t executeCoup(const std::string &playerName);
