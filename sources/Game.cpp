@@ -11,9 +11,10 @@ namespace coup {
 
 
     std::string Game::turn() {
-        if (this->_currPlayers.empty()) {
-            throw std::runtime_error("no players in game");
+        if (this->_currPlayers.size() < 2) {
+            throw std::runtime_error("not enough players in game");
         }
+        this->hasStarted = true;
         return this->_currPlayers[this->currPlayer];
     }
 
@@ -22,6 +23,12 @@ namespace coup {
     }
 
     void Game::addPlayer(const std::string &name) {
+        if (this->_currPlayers.size() > 6) {
+            throw std::runtime_error("invalid amount of players");
+        }
+        if (this->hasStarted) {
+            throw std::runtime_error("game has started");
+        }
         this->_currPlayers.push_back(name);
     }
 
@@ -39,12 +46,16 @@ namespace coup {
 
     void Game::revivePlayer(size_t playerIdx, const Player &toRevive) {
         this->_currPlayers.insert(this->_currPlayers.begin() + (int) playerIdx, toRevive.getName());
+        if (playerIdx < this->currPlayer) {
+            this->currPlayer++;
+        }
     }
 
     size_t Game::executeCoup(const std::string &playerName) {
         for (size_t i = 0; i < this->_currPlayers.size(); ++i) {
             if (this->_currPlayers[i] == playerName) {
                 this->_currPlayers.erase(this->_currPlayers.begin() + (int) i);
+                this->currPlayer = this->currPlayer % this->_currPlayers.size();
                 return i;
             }
         }

@@ -17,6 +17,7 @@ namespace coup {
     private:
         std::vector<std::string> _currPlayers;
         size_t currPlayer = 0;
+        bool hasStarted = false;
 
         //returns the index of the player that was couped
 
