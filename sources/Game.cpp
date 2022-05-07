@@ -23,7 +23,7 @@ namespace coup {
     }
 
     void Game::addPlayer(const std::string &name) {
-        if (this->_currPlayers.size() > 6) {
+        if (this->_currPlayers.size() > 5) {
             throw std::runtime_error("invalid amount of players");
         }
         if (this->hasStarted) {
@@ -33,7 +33,7 @@ namespace coup {
     }
 
     std::string Game::winner() {
-        if (this->_currPlayers.size() == 1) {
+        if (this->_currPlayers.size() == 1 and this->hasStarted) {
             return this->_currPlayers[0];
         }
         throw std::runtime_error("game is not yet finished");
