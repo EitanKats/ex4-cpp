@@ -9,10 +9,12 @@
 
 namespace coup {
     class Assassin : public Player {
+    private:
+        int discountedCoupCost = 3;
     public:
-        Assassin(Game &currGame,const std::string& name);
+        Assassin(Game &currGame, const std::string &name);
 
-        virtual void coup(Player& otherPlayer) override;
+        virtual void coup(Player &otherPlayer) override;
 
         std::string role() const override;
     };

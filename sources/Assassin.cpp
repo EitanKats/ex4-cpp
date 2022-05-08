@@ -8,19 +8,23 @@ namespace coup {
 
     Assassin::Assassin(Game &currGame, const std::string &name)
             : Player{currGame, name} {
-        this->coupCost = 3;
     }
 
     void Assassin::coup(Player &otherPlayer) {
-        if (this->_coins < this->coupCost) {
+        isEligibleForMove();
+        if (this->_coins < this->discountedCoupCost) {
             throw std::runtime_error("insufficient coins");
+        }
+        //executing regular coup if the coins are >= 7
+        if (this->_coins >= this->coupCost) {
+            return this->Player::coup(otherPlayer);
         }
         this->_blockers = {"Contessa"};
         size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
         this->_rollbackcb = [&otherPlayer, coupedPlayerIdx, this]() {
             this->_currGame.revivePlayer(coupedPlayerIdx, otherPlayer);
         };
-        this->amendCoins(-this->coupCost);
+        this->amendCoins(-this->discountedCoupCost);
         this->coupPassTurn(coupedPlayerIdx);
     }
 
