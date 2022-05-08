@@ -10,9 +10,8 @@
 
 namespace coup {
     Player::Player(Game &currGame, const std::string &name)
-            : _currGame(currGame), _name(name), _coins(0) {
+            : _currGame(currGame), _name(name), _coins(0), _isAlive(true) {
         this->_currGame.addPlayer(name);
-        this->_isAlive = true;
     }
 
     void Player::isEligibleForMove() {
@@ -22,14 +21,14 @@ namespace coup {
         clearCB();
     }
 
-    void Player::isCoupNecessary() {
-        if (this->_coins == 10) {
+    void Player::isCoupNecessary() const {
+        if (this->_coins >= MUST_COUP_AMOUNT) {
             throw std::runtime_error("must execute coup");
         }
     }
 
     void Player::validateInteractionAction(const Player &otherPlayer) {
-        if (!otherPlayer._isAlive) {
+        if (!otherPlayer.isAlive()) {
             throw std::runtime_error("interaction is invalid, player is already out of the game");
         }
     }
@@ -60,7 +59,7 @@ namespace coup {
         this->isCoupNecessary();
         this->_blockers = {"Duke"};
         this->_rollbackcb = [this]() { this->_coins -= 2; };
-        this->_coins += 2;
+        this->amendCoins(2);
         this->_currGame.passTurn();
     }
 
@@ -71,9 +70,8 @@ namespace coup {
             throw std::runtime_error("insufficient amount of coins");
         }
         this->amendCoins(-this->coupCost);
-        size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
+        this->_currGame.executeCoup(otherPlayer.getName());
         otherPlayer.setIsAlive(false);
-        this->coupPassTurn(coupedPlayerIdx);
     }
 
     void Player::checkBlock(const Player &blockingPlayer) {

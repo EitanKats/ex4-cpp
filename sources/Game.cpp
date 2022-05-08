@@ -11,7 +11,7 @@ namespace coup {
 
 
     std::string Game::turn() {
-        if (this->_currPlayers.size() < 2) {
+        if (this->_currPlayers.size() < MIN_PLAYERS) {
             throw std::runtime_error("not enough players in game");
         }
         this->hasStarted = true;
@@ -23,7 +23,7 @@ namespace coup {
     }
 
     void Game::addPlayer(const std::string &name) {
-        if (this->_currPlayers.size() > 5) {
+        if (this->_currPlayers.size() > MAX_PLAYERS) {
             throw std::runtime_error("invalid amount of players");
         }
         if (this->hasStarted) {
@@ -56,6 +56,9 @@ namespace coup {
         for (size_t i = 0; i < this->_currPlayers.size(); ++i) {
             if (this->_currPlayers[i] == playerName) {
                 this->_currPlayers.erase(this->_currPlayers.begin() + (int) i);
+                if (i > this->getCurrPlayer()) {
+                    this->passTurn();
+                }
                 this->currPlayer = this->currPlayer % this->_currPlayers.size();
                 return i;
             }

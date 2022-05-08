@@ -10,6 +10,9 @@
 #include "Player.hpp"
 
 namespace coup {
+    const int MIN_PLAYERS = 2;
+    const int MAX_PLAYERS = 5;
+
     class Player;
 
     class Game {

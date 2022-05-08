@@ -12,6 +12,8 @@
 #include "string"
 
 namespace coup {
+    const int MUST_COUP_AMOUNT = 10;
+    const int REGULAR_COUP_COST = 7;
 
     class Game;
 
@@ -25,7 +27,7 @@ namespace coup {
         Game &getCurrGame() const;
 
     protected:
-        int coupCost = 7;
+        int coupCost = REGULAR_COUP_COST;
         std::function<void()> _rollbackcb;
         std::set<std::string> _blockers;
         bool _isAlive = false;
@@ -35,11 +37,11 @@ namespace coup {
 
         void isEligibleForMove();
 
-        void isCoupNecessary();
+        void isCoupNecessary() const;
 
         void coupPassTurn(size_t coupedPlayerIdx);
 
-        void validateInteractionAction(const Player& otherPlayer);
+        void validateInteractionAction(const Player &otherPlayer);
 
     public:
         bool isAlive() const;

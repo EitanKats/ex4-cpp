@@ -27,7 +27,6 @@ namespace coup {
             this->_currGame.revivePlayer(coupedPlayerIdx, otherPlayer);
         };
         this->amendCoins(-this->discountedCoupCost);
-        this->coupPassTurn(coupedPlayerIdx);
     }
 
     std::string Assassin::role() const {
