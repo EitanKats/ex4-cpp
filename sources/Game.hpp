@@ -38,7 +38,7 @@ namespace coup {
 
         size_t executeCoup(const std::string &playerName);
 
-        void revivePlayer(size_t playerIdx, const Player &toRevive);
+        void revivePlayer(size_t playerIdx, Player &toRevive);
     };
 }
 

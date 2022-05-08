@@ -14,7 +14,9 @@ namespace coup {
     }
 
     void Ambassador::transfer(Player &firstPlayer, Player &secondPlayer) {
-        this->isEligibleForMove();
+        isEligibleForMove();
+        validateInteractionAction(firstPlayer);
+        validateInteractionAction(secondPlayer);
         this->isCoupNecessary();
         if (&firstPlayer == &secondPlayer) {
             throw std::runtime_error("same player used twice in the transfer");

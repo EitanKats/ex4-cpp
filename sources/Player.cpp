@@ -12,6 +12,7 @@ namespace coup {
     Player::Player(Game &currGame, const std::string &name)
             : _currGame(currGame), _name(name), _coins(0) {
         this->_currGame.addPlayer(name);
+        this->_isAlive = true;
     }
 
     void Player::isEligibleForMove() {
@@ -27,6 +28,12 @@ namespace coup {
         }
     }
 
+    void Player::validateInteractionAction(const Player &otherPlayer) {
+        if (!otherPlayer._isAlive) {
+            throw std::runtime_error("interaction is invalid, player is already out of the game");
+        }
+    }
+
     void Player::income() {
         this->isEligibleForMove();
         this->isCoupNecessary();
@@ -36,6 +43,9 @@ namespace coup {
 
     void Player::amendCoins(int diff) {
         if (this->coins() < 0) {
+            throw std::runtime_error("error during coin amendment execution");
+        }
+        if (this->coins() + diff < 0) {
             throw std::runtime_error("error during coin amendment execution");
         }
         this->_coins += diff;
@@ -56,11 +66,13 @@ namespace coup {
 
     void Player::coup(Player &otherPlayer) {
         this->isEligibleForMove();
+        this->validateInteractionAction(otherPlayer);
         if (this->_coins < this->coupCost) {
             throw std::runtime_error("insufficient amount of coins");
         }
         this->amendCoins(-this->coupCost);
         size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
+        otherPlayer.setIsAlive(false);
         this->coupPassTurn(coupedPlayerIdx);
     }
 
@@ -97,6 +109,14 @@ namespace coup {
 
     Game &Player::getCurrGame() const {
         return _currGame;
+    }
+
+    bool Player::isAlive() const {
+        return _isAlive;
+    }
+
+    void Player::setIsAlive(bool isAlive) {
+        _isAlive = isAlive;
     }
 
 }

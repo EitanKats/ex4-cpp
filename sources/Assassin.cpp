@@ -12,6 +12,7 @@ namespace coup {
 
     void Assassin::coup(Player &otherPlayer) {
         isEligibleForMove();
+        validateInteractionAction(otherPlayer);
         if (this->_coins < this->discountedCoupCost) {
             throw std::runtime_error("insufficient coins");
         }
@@ -21,6 +22,7 @@ namespace coup {
         }
         this->_blockers = {"Contessa"};
         size_t coupedPlayerIdx = this->_currGame.executeCoup(otherPlayer.getName());
+        otherPlayer.setIsAlive(false);
         this->_rollbackcb = [&otherPlayer, coupedPlayerIdx, this]() {
             this->_currGame.revivePlayer(coupedPlayerIdx, otherPlayer);
         };

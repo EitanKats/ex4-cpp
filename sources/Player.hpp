@@ -28,6 +28,7 @@ namespace coup {
         int coupCost = 7;
         std::function<void()> _rollbackcb;
         std::set<std::string> _blockers;
+        bool _isAlive = false;
 
         //the protected constructor prevents instance creation
         Player(Game &currGame, const std::string &name);
@@ -38,6 +39,10 @@ namespace coup {
 
         void coupPassTurn(size_t coupedPlayerIdx);
 
+        void validateInteractionAction(const Player& otherPlayer);
+
+    public:
+        bool isAlive() const;
 
     private:
         void clearCB();
@@ -60,6 +65,8 @@ namespace coup {
         void amendCoins(int diff);
 
         const std::string &getName() const;
+
+        void setIsAlive(bool isAlive);
     };
 }
 

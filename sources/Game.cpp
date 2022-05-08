@@ -44,8 +44,9 @@ namespace coup {
         this->currPlayer = this->currPlayer % this->_currPlayers.size();
     }
 
-    void Game::revivePlayer(size_t playerIdx, const Player &toRevive) {
+    void Game::revivePlayer(size_t playerIdx, Player &toRevive) {
         this->_currPlayers.insert(this->_currPlayers.begin() + (int) playerIdx, toRevive.getName());
+        toRevive.setIsAlive(true);
         if (playerIdx < this->currPlayer) {
             this->currPlayer++;
         }
