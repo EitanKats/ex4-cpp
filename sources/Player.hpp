@@ -41,7 +41,7 @@ namespace coup {
 
         void coupPassTurn(size_t coupedPlayerIdx);
 
-        void validateInteractionAction(const Player &otherPlayer);
+        static void validateInteractionAction(const Player &otherPlayer);
 
     public:
         bool isAlive() const;
